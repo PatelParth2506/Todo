@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "devuser",
+    "password": "Dev!123#",
+    "database": "db_parth",
+    "host": "43.205.160.69",
+    "dialect": "mysql" ,
+    "timezone": "+00:00",
+    "logging" : false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

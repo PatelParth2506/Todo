@@ -1,6 +1,5 @@
-const { where, Op } = require('sequelize')
-const db = require('../models/index')
-const { Category,Todo } = db
+const { Op } = require('sequelize')
+const { Category,Todo,TodoSharedTo } = require('../models/index')
 
 const apiError = require('../utils/apiError')
 const apiResponse = require('../utils/apiResponse')
@@ -50,7 +49,7 @@ const ctrlUpdateCategory = async(req,res)=>{
 
 const ctrlGetAllCategory = async(req,res)=>{
     const categorys = await Category.findAll({ where : { user_id : req.user.user_id } })
-    const sharedCategory = await db.TodoSharedTo.findAll({ where : { sharedWithUser_id : req.user.user_id },
+    const sharedCategory = await TodoSharedTo.findAll({ where : { sharedWithUser_id : req.user.user_id },
         include :[{
             model : Todo,
             where : { creted_by :{

@@ -11,9 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
 
-echo "backend/src/utils/serviceAccountkey.json" >> .gitignore
-
+backend/src/utils/serviceAccountkey.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

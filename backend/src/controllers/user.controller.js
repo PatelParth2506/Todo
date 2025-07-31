@@ -2,11 +2,9 @@ const apiError = require("../utils/apiError");
 const apiResponse = require("../utils/apiResponse");
 const admin = require("../utils/firebaseAdmin");
 
-const db = require("../models/index");
-const User = db.User;
+const { User } = require("../models/index");
 
 const jwt = require("jsonwebtoken");
-const { where } = require("sequelize");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 
@@ -83,8 +81,6 @@ const ctrlLogin = async (req, res) => {
   if (usercheck.isEmailVerified === false) {
     throw new apiError(402, "First Verify Your Email");
   }
-  // usercheck.isEmailVerified = true
-  // await usercheck.save()
 
   const token = jwt.sign(
     { user_id: usercheck.user_id, username: usercheck.username },

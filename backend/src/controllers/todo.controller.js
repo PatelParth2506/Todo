@@ -1,13 +1,12 @@
 const { Op, where } = require("sequelize");
-const db = require("../models/index");
-const { Todo,TodoDescription,Category,TodoSharedTo,User } = db
+const { Todo,TodoDescription,Category,TodoSharedTo,User } = require("../models/index");
 
 const apiError = require("../utils/apiError");
 const apiResponse = require("../utils/apiResponse");
 
 const ctrlCreateTodo = async (req, res) => {
   const { category_id, todo_title, todo_description } = req.body;
-  console.log(req.user);
+
   const categoryCheck = await Category.findByPk(category_id);
   if (!categoryCheck) {
     throw new apiError(404, "No Category Found");

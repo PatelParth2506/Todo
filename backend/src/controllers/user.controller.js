@@ -69,7 +69,7 @@ const ctrlLogin = async (req, res) => {
     throw new apiError(404, "No User Found");
   }
 
-  if (usercheck.signWithplatform === 'register' && !usercheck.isEmailVerified) {
+  if (!usercheck.isEmailVerified) {
     throw new apiError(402, "Please verify your email before logging in.");
   }
 

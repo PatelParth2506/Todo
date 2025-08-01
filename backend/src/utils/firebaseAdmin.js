@@ -14,7 +14,6 @@ const serviceAccount = {
     client_x509_cert_url : process.env.FIREBASE_ACCOUNT_CLIENT_X509_CERT_URL,
     universe_domain : "googleapis.com"
 }
-const serviceAccount  = require('./serviceAccountkey.json')
 
 admin.initializeApp({
     credential:admin.credential.cert(serviceAccount)

@@ -5,7 +5,7 @@ const apiError = require("../utils/apiError");
 const apiResponse = require("../utils/apiResponse");
 
 const ctrlCreateTodo = async (req, res) => {
-  const { category_id, todo_title, todo_description } = req.body;
+  const { category_id, todo_title } = req.body;
 
   const categoryCheck = await Category.findByPk(category_id);
   if (!categoryCheck) {
@@ -17,13 +17,6 @@ const ctrlCreateTodo = async (req, res) => {
     todo_title,
     creted_by: req.user.user_id,
   });
-  if (todo_description) {
-    const description = await TodoDescription.create({
-      todo_id: todo.todo_id,
-      created_by: req.user.user_id,
-      todo_description,
-    });
-  }
 
   await TodoSharedTo.create({
     sharedWithUser_id : req.user.user_id,
